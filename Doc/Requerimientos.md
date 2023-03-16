@@ -1,0 +1,19 @@
+## Requerimientos:
+
+- El software debe permitir registrar tag RFID.
+- Abrir y cerrar la puerta motorizada con el uso de un boton.
+- Enviar mensajes cada vez que se abra y cierre la puerta con el boton.
+- Abrir la puerta a la hora que se especifique (07:00).
+- Almacenar el registro de lectura de tags rfid que pasan por el sensor ubicado en la puerta para determinar si las gallinas salen o ingresan al gallinero.
+- Mostrar cantidad de gallinas dentro y fuera gallinero.
+- Cerrar puerta automáticamente si todas las gallinas están dentro y es la hora determinada para cerrar (18:00).
+- Cerrar la puerta si hay al menos una gallina dentro del gallinero y es la hora determinada para dicha acción (22:00).
+- Determinar el número de gallinas dentro al cerrar la puerta y registrarlo.
+- Registrar la fecha y hora de apertura y cierre del gallinero e indicar si fue automatico o manual.
+- Calcular el promedio que pasan las gallinas en el gallinero.
+
+## Condiciones:
+
+- Toda tag debe ser registrado antes de ser empezado a utilizar.
+- El primer registro de cada tag es la primer salida del gallinero.
+
