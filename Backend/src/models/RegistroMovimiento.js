@@ -5,6 +5,7 @@ export const RegistroMovimiento = sequelize.define('registros_movimientos', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true
     },
     fecha: {
         type: DataTypes.DATE,

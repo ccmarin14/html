@@ -5,6 +5,7 @@ export const RegistroPuerta = sequelize.define('registros_puerta', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true
     },
     fecha: {
         type: DataTypes.DATE,

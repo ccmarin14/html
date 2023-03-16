@@ -1,14 +1,13 @@
 import { sequelize } from './database/database.js';
 import app from './app.js'
 
-
 // import './models/Gallinero.js'
 // import './models/Gallina.js'
 // import './models/Sensor.js'
 // import './models/Puerta.js'
 // import './models/RegistroPuerta.js'
 // import './models/RegistroMovimiento.js'
-import './models/Relaciones.js'
+// import './models/Relaciones.js'
 
 async function main() {
     try {
