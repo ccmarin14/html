@@ -49,15 +49,15 @@ export const createRegistroPuerta = async (req,res) => {
 export const updateRegistroPuerta = async (req,res) => {
     try {
         const {id} = req.params;
-        const {puertaId, fecha, evento, tipo} = req.body;
 
-        const registroPuerta = await RegistroPuerta.findByPk(id);
-        registroPuerta.puertaId = puertaId;
-        registroPuerta.fecha = fecha;
-        registroPuerta.evento = evento;
-        registroPuerta.tipo = tipo;
+        const registroPuerta = await RegistroPuerta.findOne({
+            where: {
+                id: id
+            }
+        });
+
+        registroPuerta.set(req.body);
         await registroPuerta.save();
-
         res.json(registroPuerta);
     } catch (error) {
         return res.status(500).json({message: error.message});

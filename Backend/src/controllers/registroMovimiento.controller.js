@@ -49,15 +49,15 @@ export const createRegistroMovimiento = async (req,res) => {
 export const updateRegistroMovimiento = async (req,res) => {
     try {
         const {id} = req.params;
-        const {tagId, sensorId, fecha, dentro} = req.body;
 
-        const registroMovimiento = await RegistroMovimiento.findByPk(id);
-        registroMovimiento.tagId = tagId;
-        registroMovimiento.sensorId = sensorId;
-        registroMovimiento.fecha = fecha;
-        registroMovimiento.dentro = dentro;
+        const registroMovimiento = await RegistroMovimiento.findOne({
+            where: {
+                id: id
+            }
+        });
+
+        registroMovimiento.set(req.body);
         await registroMovimiento.save();
-
         res.json(registroMovimiento);
     } catch (error) {
         return res.status(500).json({message: error.message});
