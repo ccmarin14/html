@@ -15,7 +15,7 @@ export const getGallina = async (req,res) => {
 
         const gallina = await Gallina.findOne({
             where: {
-                id
+                tag: id
             }
         });
 
@@ -42,12 +42,12 @@ export const createGallina = async (req,res) => {
 
 export const updateGallina = async (req,res) => {
     try {
-        const {id_tag} = req.params;
-        const {gallinero,estado} = req.body;
+        const {id} = req.params;
+        const {estado,gallineroId} = req.body;
 
-        const gallina = await Gallina.findByPk(id_tag);
-        gallina.gallinero = gallinero;
+        const gallina = await Gallina.findByPk(id);
         gallina.estado = estado;
+        gallina.gallineroId = gallineroId;
         await gallina.save();
 
         res.json(gallina);
@@ -61,7 +61,7 @@ export const deleteGallina = async (req,res) => {
         const {id} = req.params;
         await Gallina.destroy({
             where: {
-                id,
+                tag: id
             },
         });
         res.sendStatus(204);
