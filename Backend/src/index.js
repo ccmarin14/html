@@ -7,7 +7,7 @@ import app from './app.js'
 // import './models/Puerta.js'
 // import './models/RegistroPuerta.js'
 // import './models/RegistroMovimiento.js'
-// import './models/Relaciones.js'
+import './models/Relaciones.js'
 
 async function main() {
     try {

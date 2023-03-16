@@ -13,17 +13,17 @@ export const getRegistroMovimiento = async (req,res) => {
     try {
         const {id} = req.params;
 
-        const sensor = await RegistroMovimiento.findOne({
+        const registroMovimiento = await RegistroMovimiento.findOne({
             where: {
                 id: id
             }
         });
 
-        if (!sensor) {
+        if (!registroMovimiento) {
             return res.status(404).json({message: `Registro de movimiento ${id} no existe`})
         }
 
-        res.json(sensor);
+        res.json(registroMovimiento);
     } catch (error) {
         return res.status(500).json({message: error.message});
     }
@@ -49,13 +49,16 @@ export const createRegistroMovimiento = async (req,res) => {
 export const updateRegistroMovimiento = async (req,res) => {
     try {
         const {id} = req.params;
-        const {gallineroId} = req.body;
+        const {tagId, sensorId, fecha, dentro} = req.body;
 
-        const sensor = await Sensor.findByPk(id);
-        sensor.gallineroId = gallineroId;
-        await sensor.save();
+        const registroMovimiento = await RegistroMovimiento.findByPk(id);
+        registroMovimiento.tagId = tagId;
+        registroMovimiento.sensorId = sensorId;
+        registroMovimiento.fecha = fecha;
+        registroMovimiento.dentro = dentro;
+        await registroMovimiento.save();
 
-        res.json(sensor);
+        res.json(registroMovimiento);
     } catch (error) {
         return res.status(500).json({message: error.message});
     }
@@ -64,7 +67,7 @@ export const updateRegistroMovimiento = async (req,res) => {
 export const deleteRegistroMovimiento = async (req,res) => {
     try {
         const {id} = req.params;
-        await Sensor.destroy({
+        await RegistroMovimiento.destroy({
             where: {
                 id
             },
