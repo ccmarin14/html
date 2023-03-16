@@ -9,21 +9,21 @@ export const getPuertas = async (req,res) => {
     }
 }
 
-export const getGallina = async (req,res) => {
+export const getPuerta = async (req,res) => {
     try {
         const {id} = req.params;
 
-        const gallina = await Gallina.findOne({
+        const puerta = await Puerta.findOne({
             where: {
-                tag: id
+                id: id
             }
         });
 
-        if (!gallina) {
-            return res.status(404).json({message: `Gallina ${id} no existe`})
+        if (!puerta) {
+            return res.status(404).json({message: `Puerta ${id} no existe`})
         }
 
-        res.json(gallina);
+        res.json(puerta);
     } catch (error) {
         return res.status(500).json({message: error.message});
     }
@@ -39,28 +39,27 @@ export const createPuerta = async (req,res) => {
     res.json(newPuerta);
 }
 
-export const updateGallina = async (req,res) => {
+export const updatePuerta = async (req,res) => {
     try {
         const {id} = req.params;
-        const {estado,gallineroId} = req.body;
+        const {gallineroId} = req.body;
 
-        const gallina = await Gallina.findByPk(id);
-        gallina.estado = estado;
-        gallina.gallineroId = gallineroId;
-        await gallina.save();
+        const puerta = await Puerta.findByPk(id);
+        puerta.gallineroId = gallineroId;
+        await puerta.save();
 
-        res.json(gallina);
+        res.json(puerta);
     } catch (error) {
         return res.status(500).json({message: error.message});
     }
 }
 
-export const deleteGallina = async (req,res) => {
+export const deletePuerta = async (req,res) => {
     try {
         const {id} = req.params;
-        await Gallina.destroy({
+        await Puerta.destroy({
             where: {
-                tag: id
+                id
             },
         });
         res.sendStatus(204);
